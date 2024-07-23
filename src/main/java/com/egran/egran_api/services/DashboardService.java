@@ -24,7 +24,7 @@ public class DashboardService {
         Integer totalFlights = flightRepository.countByFarmerId(farmerId);
 
         //get total hours
-        Integer totalHours = 0;
+        int totalHours = 0;
         List<Flight> flights = flightRepository.findByFarmerId(farmerId);
 
         for (Flight flight: flights) {

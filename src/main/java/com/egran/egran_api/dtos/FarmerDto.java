@@ -1,7 +1,5 @@
 package com.egran.egran_api.dtos;
 
-import com.egran.egran_api.entities.Admin;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,5 @@
 package com.egran.egran_api.dtos;
 
-import com.egran.egran_api.entities.Farmer;
 import com.egran.egran_api.entities.FlightStatus;
 import com.egran.egran_api.entities.Image;
 import com.egran.egran_api.entities.PolygonPoint;
