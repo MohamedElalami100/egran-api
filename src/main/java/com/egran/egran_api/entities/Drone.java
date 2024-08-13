@@ -25,4 +25,8 @@ public class Drone {
     @Column(name = "serial_number")
     private String serialNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "admin_id", nullable = false)
+    private Admin admin;
+
 }

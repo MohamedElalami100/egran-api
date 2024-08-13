@@ -15,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,20 +29,13 @@ public class FlightService {
         Flight flight = flightRepository.findById(flightId)
                 .orElseThrow(() -> new ResourceNotFoundException("flight not found with id " + flightId));
 
-        //get Images:
         List<Image> images = new ArrayList<>();
-        if (flight.getImages() != null)
+        if (flight.getImages() != null) {
             images = flight.getImages();
-        List<ImageDto> imageDtos = new ArrayList<>();
-        for (Image image: images) {
-            imageDtos.add(ImageDto.builder()
-                            .id(image.getId())
-                            .url(image.getUrl())
-                            .timestamp(image.getTimestamp())
-                            .lat(image.getLat())
-                            .lng(image.getLng())
-                    .build());
         }
+
+        // Map to group images by pairId
+        List<List<ImageDto>> groupedImages = getImageDtos(images);
 
         //get polygon points:
         List<PolygonPoint> polygonPoints = new ArrayList<>();
@@ -80,7 +71,7 @@ public class FlightService {
                 .endTime(flight.getEndTime())
                 .duration(duration)
                 .farmerId(farmerId)
-                .images(images)
+                .images(groupedImages)
                 .polygonPoints(polygonPoints)
                 .build();
     }
@@ -138,7 +129,41 @@ public class FlightService {
         return flightReducedDtos;
     }
 
+    private static List<List<ImageDto>> getImageDtos(List<Image> images) {
+        List<List<ImageDto>> imagePairs = new ArrayList<>();
 
+        for (Image image : images) {
+            ImageDto imageDto = ImageDto.builder()
+                    .id(image.getId())
+                    .url(image.getUrl())
+                    .timestamp(image.getTimestamp())
+                    .pairId(image.getPairId())
+                    .type(image.getType())
+                    .lat(image.getLat())
+                    .lng(image.getLng())
+                    .build();
+
+            boolean pairFound = false;
+
+            // Check if there's already a list for this pairId
+            for (List<ImageDto> pairList : imagePairs) {
+                if (!pairList.isEmpty() && pairList.get(0).getPairId().equals(image.getPairId())) {
+                    pairList.add(imageDto);
+                    pairFound = true;
+                    break;
+                }
+            }
+
+            // If no list was found for this pairId, create a new one
+            if (!pairFound) {
+                List<ImageDto> newPairList = new ArrayList<>();
+                newPairList.add(imageDto);
+                imagePairs.add(newPairList);
+            }
+        }
+
+        return imagePairs;
+    }
 
 
 }

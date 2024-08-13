@@ -1,5 +1,6 @@
 package com.egran.egran_api.dtos;
 
+import com.egran.egran_api.entities.ImageType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,8 @@ public class ImageDto {
     private String url;
     private LocalDateTime timestamp;
     private Double lat;
+    private Integer pairId;
+    private ImageType type;
     private Double lng;
 
 }

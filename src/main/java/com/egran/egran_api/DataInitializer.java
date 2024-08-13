@@ -1,4 +1,4 @@
-/**package com.egran.egran_api;
+package com.egran.egran_api;
 
 import com.egran.egran_api.entities.*;
 import com.egran.egran_api.repositories.*;
@@ -66,11 +66,15 @@ public class DataInitializer implements CommandLineRunner {
 
         // Create and save Drones
         Drone drone1 = Drone.builder()
-                .model("Model A")
+                .model("ModelA")
+                .admin(admin)
+                .serialNumber("BZ3324")
                 .build();
 
         Drone drone2 = Drone.builder()
-                .model("Model B")
+                .model("ModelB")
+                .admin(admin)
+                .serialNumber("TR3324")
                 .build();
 
         droneRepository.save(drone1);
@@ -104,6 +108,8 @@ public class DataInitializer implements CommandLineRunner {
                 .timestamp(LocalDateTime.now().minusHours(1))
                 .lat(34.0522)
                 .lng(-118.2437)
+                .pairId(1)
+                .type(ImageType.RGB)
                 .flight(flight1)
                 .build();
 
@@ -112,6 +118,8 @@ public class DataInitializer implements CommandLineRunner {
                 .timestamp(LocalDateTime.now().minusHours(1).plusMinutes(10))
                 .lat(34.0522)
                 .lng(-118.2437)
+                .pairId(1)
+                .type(ImageType.NIR)
                 .flight(flight1)
                 .build();
 
@@ -120,6 +128,18 @@ public class DataInitializer implements CommandLineRunner {
                 .timestamp(LocalDateTime.now().minusHours(2))
                 .lat(36.7783)
                 .lng(-119.4179)
+                .pairId(2)
+                .type(ImageType.RGB)
+                .flight(flight2)
+                .build();
+
+        Image image4 = Image.builder()
+                .url("http://example.com/image4.jpg")
+                .timestamp(LocalDateTime.now().minusHours(2))
+                .lat(36.7783)
+                .lng(-119.4179)
+                .pairId(2)
+                .type(ImageType.NIR)
                 .flight(flight2)
                 .build();
 
@@ -157,4 +177,3 @@ public class DataInitializer implements CommandLineRunner {
         polygonPointRepository.saveAll(Arrays.asList(point1, point2, point3, point4));
     }
 }
-**/

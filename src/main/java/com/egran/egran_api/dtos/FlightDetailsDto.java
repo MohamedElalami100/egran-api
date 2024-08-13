@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
@@ -25,6 +26,6 @@ public class FlightDetailsDto {
     private Duration duration;
     private FlightStatus status;
     private Integer farmerId;
-    private List<Image> images;
+    List<List<ImageDto>> images;
     private List<PolygonPoint> polygonPoints;
 }

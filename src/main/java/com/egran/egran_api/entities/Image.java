@@ -28,6 +28,12 @@ public class Image {
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
+    @Column(name = "pairId")
+    private Integer pairId;
+
+    @Column(name = "type")
+    private ImageType type;
+
     @Column(name = "lat")
     private Double lat;
 
