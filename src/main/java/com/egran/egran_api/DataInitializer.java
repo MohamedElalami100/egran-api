@@ -1,4 +1,4 @@
-package com.egran.egran_api;
+/**package com.egran.egran_api;
 
 import com.egran.egran_api.entities.*;
 import com.egran.egran_api.repositories.*;
@@ -177,3 +177,4 @@ public class DataInitializer implements CommandLineRunner {
         polygonPointRepository.saveAll(Arrays.asList(point1, point2, point3, point4));
     }
 }
+**/
