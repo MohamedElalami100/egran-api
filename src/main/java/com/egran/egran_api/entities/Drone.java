@@ -15,15 +15,11 @@ import lombok.NoArgsConstructor;
 public class Drone {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private String id;
 
     @Column(name = "model")
     private String model;
-
-    @Column(name = "serial_number")
-    private String serialNumber;
 
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)

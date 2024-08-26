@@ -1,7 +1,8 @@
 package com.egran.egran_api.controllers;
 
-import com.egran.egran_api.dtos.FlightDetailsDto;
-import com.egran.egran_api.dtos.FlightReducedDto;
+import com.egran.egran_api.dtos.*;
+import com.egran.egran_api.entities.Flight;
+import com.egran.egran_api.services.CreateFlightService;
 import com.egran.egran_api.services.FlightService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,8 @@ import java.util.List;
 public class FlightController {
 
     private final FlightService flightService;
+
+    private final CreateFlightService createFlightService;
 
     @GetMapping("/{flightId}")
     public ResponseEntity<FlightDetailsDto> getFlightById(@PathVariable Integer flightId) {
@@ -32,5 +35,11 @@ public class FlightController {
     public ResponseEntity<List<FlightReducedDto>> getFlightsByAdminId(@PathVariable Integer adminId) {
         List<FlightReducedDto> flights = flightService.getFlightsByAdminId(adminId);
         return ResponseEntity.ok(flights);
+    }
+
+    @PostMapping
+    public ResponseEntity<Flight> createFarmer(@RequestBody CreateFlightDto createFlightDto) {
+        Flight flight = createFlightService.createOnProcessFlight(createFlightDto);
+        return ResponseEntity.ok(flight);
     }
 }

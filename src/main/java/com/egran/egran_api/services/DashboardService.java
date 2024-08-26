@@ -37,7 +37,7 @@ public class DashboardService {
 
         //get drones used
         Integer totalDrones = 0;
-        HashSet<Integer> idsSet = new HashSet<>();
+        HashSet<String> idsSet = new HashSet<>();
 
         for (Flight flight: flights) {
             if (flight.getDrone() == null)

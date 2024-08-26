@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DroneDto {
-    private String id;
-    private String model;
+public class CreatePolygonPointDto {
+    private Double lat;
+    private Double lng;
+    private Integer sequence;
 }

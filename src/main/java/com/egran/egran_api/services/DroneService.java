@@ -26,7 +26,6 @@ public class DroneService {
             droneDtos.add(DroneDto.builder()
                     .id(drone.getId())
                     .model(drone.getModel())
-                    .serialNumber(drone.getSerialNumber())
                     .build());
         }
 
