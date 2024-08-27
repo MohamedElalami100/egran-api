@@ -4,10 +4,7 @@ import com.egran.egran_api.dtos.CreateFlightDto;
 import com.egran.egran_api.dtos.CreatePolygonPointDto;
 import com.egran.egran_api.entities.*;
 import com.egran.egran_api.exceptions.ResourceNotFoundException;
-import com.egran.egran_api.repositories.DroneRepository;
-import com.egran.egran_api.repositories.FarmerRepository;
-import com.egran.egran_api.repositories.FlightRepository;
-import com.egran.egran_api.repositories.PolygonPointRepository;
+import com.egran.egran_api.repositories.*;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,8 @@ public class CreateFlightService {
     @Autowired
     private PolygonPointRepository polygonPointRepository;
 
+    @Autowired
+    private FlightPointRepository flightPointRepository;
 
     public Flight createOnProcessFlight(CreateFlightDto createFlightDto){
         //get Drone by id
@@ -59,6 +58,18 @@ public class CreateFlightService {
                     .build();
             sequence++;
             polygonPointRepository.save(polygonPoint);
+        }
+
+        sequence = 0;
+        for (CreatePolygonPointDto polygonPointDto : createFlightDto.getFlightPoints()) {
+            FlightPoint flightPoint = FlightPoint.builder()
+                    .lng(polygonPointDto.getLng())
+                    .lat(polygonPointDto.getLat())
+                    .sequence(sequence)
+                    .flight(flight)
+                    .build();
+            sequence++;
+            flightPointRepository.save(flightPoint);
         }
 
         return flight;

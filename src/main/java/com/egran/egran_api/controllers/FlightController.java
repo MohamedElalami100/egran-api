@@ -38,7 +38,7 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity<Flight> createFarmer(@RequestBody CreateFlightDto createFlightDto) {
+    public ResponseEntity<Flight> createFlight(@RequestBody CreateFlightDto createFlightDto) {
         Flight flight = createFlightService.createOnProcessFlight(createFlightDto);
         return ResponseEntity.ok(flight);
     }

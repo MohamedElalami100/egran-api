@@ -33,7 +33,7 @@ public class DashboardServiceTest {
     @BeforeEach
     void setUp() {
         drone = new Drone();
-        drone.setId(1);
+        drone.setId("1");
 
         flight1 = Flight.builder()
                 .id(1)

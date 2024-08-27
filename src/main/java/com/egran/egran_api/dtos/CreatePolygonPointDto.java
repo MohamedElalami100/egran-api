@@ -13,5 +13,4 @@ import lombok.NoArgsConstructor;
 public class CreatePolygonPointDto {
     private Double lat;
     private Double lng;
-    private Integer sequence;
 }
