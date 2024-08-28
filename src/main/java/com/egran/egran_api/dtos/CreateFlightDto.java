@@ -16,9 +16,10 @@ import java.util.List;
 @AllArgsConstructor
 public class CreateFlightDto {
     private int farmerId;
-    private int droneId;
+    private String droneId;
     private LocalDate date;
     private LocalTime startTime;
+    private Integer altitude;
     private List<CreatePolygonPointDto> polygonPointDtoList;
     private List<CreatePolygonPointDto> flightPoints;
 }

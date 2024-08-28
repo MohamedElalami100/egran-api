@@ -36,6 +36,12 @@ public class Flight {
     @Column(name = "status")
     private FlightStatus status;
 
+    @Column(name = "isDroneConnected")
+    private Boolean isDroneConnected;
+
+    @Column(name = "altitude")
+    private Integer altitude;
+
     @ManyToOne
     @JoinColumn(name = "farmer_id", nullable = false)
     private Farmer farmer;

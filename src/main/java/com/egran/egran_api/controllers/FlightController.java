@@ -42,4 +42,10 @@ public class FlightController {
         Flight flight = createFlightService.createOnProcessFlight(createFlightDto);
         return ResponseEntity.ok(flight);
     }
+
+    @GetMapping("/checkConnexion/{flightId}")
+    public ResponseEntity<Boolean> checkDroneConnexionByFlightId(@PathVariable Integer flightId) {
+        Boolean isConnected = createFlightService.checkDroneConnexion(flightId);
+        return ResponseEntity.ok(isConnected);
+    }
 }

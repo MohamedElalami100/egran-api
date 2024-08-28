@@ -44,9 +44,13 @@ public class CreateFlightService {
                 .date(createFlightDto.getDate())
                 .startTime(createFlightDto.getStartTime())
                 .status(FlightStatus.IN_PROGRESS)
+                .isDroneConnected(false)
+                .altitude(createFlightDto.getAltitude())
                 .drone(drone)
                 .farmer(farmer)
                 .build();
+
+        flight = flightRepository.save(flight);
 
         Integer sequence = 0;
         for (CreatePolygonPointDto polygonPointDto : createFlightDto.getPolygonPointDtoList()) {
@@ -73,5 +77,11 @@ public class CreateFlightService {
         }
 
         return flight;
+    }
+
+    public boolean checkDroneConnexion(Integer flightId){
+        Flight flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResourceNotFoundException("flight not found with id " + flightId));
+        return flight.getIsDroneConnected();
     }
 }
