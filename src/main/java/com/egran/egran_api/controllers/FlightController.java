@@ -48,4 +48,10 @@ public class FlightController {
         Boolean isConnected = createFlightService.checkDroneConnexion(flightId);
         return ResponseEntity.ok(isConnected);
     }
+
+    @DeleteMapping("/{flightId}")
+    public ResponseEntity<Boolean> deleteFlightById(@PathVariable Integer flightId) {
+        createFlightService.deleteFlightById(flightId);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -84,4 +84,19 @@ public class CreateFlightService {
                 .orElseThrow(() -> new ResourceNotFoundException("flight not found with id " + flightId));
         return flight.getIsDroneConnected();
     }
+
+    public void deleteFlightById(Integer flightId) {
+        // Find the flight by id
+        Flight flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found with id " + flightId));
+
+        // Delete all polygon points associated with the flight
+        polygonPointRepository.deleteByFlight(flight);
+
+        // Delete all flight points associated with the flight
+        flightPointRepository.deleteByFlight(flight);
+
+        // Finally, delete the flight
+        flightRepository.delete(flight);
+    }
 }
