@@ -59,4 +59,9 @@ public class Flight {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<PolygonPoint> polygonPoints;
+
+    @OneToMany(mappedBy = "flight",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<FlightPoint> flightPoints;
 }

@@ -17,8 +17,9 @@ public class ImageDto {
     private String url;
     private LocalDateTime timestamp;
     private Double lat;
-    private Integer pairId;
     private ImageType type;
     private Double lng;
-
+    private String aiInsight;
+    private Integer tutaCount;
+    private Integer oidiumCount;
 }

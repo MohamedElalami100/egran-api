@@ -28,9 +28,6 @@ public class Image {
     @Column(name = "timestamp")
     private LocalDateTime timestamp;
 
-    @Column(name = "pairId")
-    private Integer pairId;
-
     @Column(name = "type")
     private ImageType type;
 
@@ -39,6 +36,15 @@ public class Image {
 
     @Column(name = "lng")
     private Double lng;
+
+    @Column(name = "ai_insight")
+    private String aiInsight;
+
+    @Column(name = "tuta_count")
+    private Integer tutaCount;
+
+    @Column(name = "oidium_count")
+    private Integer oidiumCount;
 
     @ManyToOne
     @JoinColumn(name = "flight_id", nullable = false)

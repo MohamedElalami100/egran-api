@@ -25,6 +25,12 @@ public class FlightController {
         return ResponseEntity.ok(flight);
     }
 
+    @GetMapping("/admin/{adminId}/InProgress")
+    public ResponseEntity<List<FlightDetailsDto>> getInProgressFlight(@PathVariable Integer adminId) {
+        List<FlightDetailsDto> flights = flightService.getInProgressFlight(adminId);
+        return ResponseEntity.ok(flights);
+    }
+
     @GetMapping("/farmer/{farmerId}")
     public ResponseEntity<List<FlightReducedDto>> getFlightsByFarmerId(@PathVariable Integer farmerId) {
         List<FlightReducedDto> flights = flightService.getFlightsByFarmerId(farmerId);
