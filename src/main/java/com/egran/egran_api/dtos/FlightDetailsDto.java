@@ -21,11 +21,14 @@ import java.util.Map;
 public class FlightDetailsDto {
     private Integer id;
     private LocalDate date;
+    private Integer altitude;
     private LocalTime startTime;
     private LocalTime endTime;
     private Duration duration;
     private FlightStatus status;
     private Integer farmerId;
+    private Double area;
+    private Integer predictedDuration;
     List<List<ImageDto>> images;
     private List<PolygonPoint> polygonPoints;
 }

@@ -46,6 +46,8 @@ public class CreateFlightService {
                 .status(FlightStatus.IN_PROGRESS)
                 .isDroneConnected(false)
                 .altitude(createFlightDto.getAltitude())
+                .area(createFlightDto.getArea())
+                .predictedDuration(createFlightDto.getPredictedDuration())
                 .drone(drone)
                 .farmer(farmer)
                 .build();
@@ -98,5 +100,15 @@ public class CreateFlightService {
 
         // Finally, delete the flight
         flightRepository.delete(flight);
+    }
+
+    public void cancelFlightById(Integer flightId) {
+        // Find the flight by id
+        Flight flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResourceNotFoundException("Flight not found with id " + flightId));
+
+        // Update the flight status to CANCELLED
+        flight.setStatus(FlightStatus.CANCELLED);
+        flightRepository.save(flight);
     }
 }

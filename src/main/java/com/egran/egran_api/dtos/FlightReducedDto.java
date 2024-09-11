@@ -20,6 +20,8 @@ public class FlightReducedDto {
     private LocalTime startTime;
     private LocalTime endTime;
     private Duration duration;
+    private Double area;
+    private Integer altitude;
     private FlightStatus status;
     private Integer farmerId;
 }

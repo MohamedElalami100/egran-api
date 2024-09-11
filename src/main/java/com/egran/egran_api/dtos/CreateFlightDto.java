@@ -20,6 +20,8 @@ public class CreateFlightDto {
     private LocalDate date;
     private LocalTime startTime;
     private Integer altitude;
+    private Double area;
+    private Integer predictedDuration;
     private List<CreatePolygonPointDto> polygonPointDtoList;
     private List<CreatePolygonPointDto> flightPoints;
 }

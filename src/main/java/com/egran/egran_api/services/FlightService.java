@@ -64,6 +64,8 @@ public class FlightService {
         return FlightDetailsDto.builder()
                 .id(flight.getId())
                 .date(flight.getDate())
+                .altitude(flight.getAltitude())
+                .area(flight.getArea())
                 .status(flight.getStatus())
                 .startTime(flight.getStartTime())
                 .endTime(flight.getEndTime())
@@ -129,10 +131,13 @@ public class FlightService {
         FlightDetailsDto flightDetailsDto = FlightDetailsDto.builder()
                 .id(flight.getId())
                 .date(flight.getDate())
+                .altitude(flight.getAltitude())
                 .status(flight.getStatus())
                 .startTime(flight.getStartTime())
                 .endTime(flight.getEndTime())
                 .duration(duration)
+                .area(flight.getArea())
+                .predictedDuration(flight.getPredictedDuration())
                 .farmerId(farmerId)
                 .images(groupedImages)
                 .polygonPoints(polygonPoints)
@@ -160,6 +165,8 @@ public class FlightService {
                         .startTime(flight.getStartTime())
                         .endTime(flight.getEndTime())
                         .duration(duration)
+                        .altitude(flight.getAltitude())
+                        .area(flight.getArea())
                         .farmerId(farmerId)
                     .build());
         }
@@ -189,6 +196,8 @@ public class FlightService {
                     .startTime(flight.getStartTime())
                     .endTime(flight.getEndTime())
                     .duration(duration)
+                    .altitude(flight.getAltitude())
+                    .area(flight.getArea())
                     .farmerId(farmerId)
                     .build());
         }

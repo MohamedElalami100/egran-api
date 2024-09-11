@@ -60,4 +60,10 @@ public class FlightController {
         createFlightService.deleteFlightById(flightId);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{flightId}/cancel")
+    public ResponseEntity<String> cancelFlight(@PathVariable Integer flightId) {
+        createFlightService.cancelFlightById(flightId);
+        return ResponseEntity.ok("Flight cancelled successfully.");
+    }
 }

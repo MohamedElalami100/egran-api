@@ -42,6 +42,12 @@ public class Flight {
     @Column(name = "altitude")
     private Integer altitude;
 
+    @Column(name = "area")
+    private Double area;
+
+    @Column(name = "predictedDuration")
+    private Integer predictedDuration;
+
     @ManyToOne
     @JoinColumn(name = "farmer_id", nullable = false)
     private Farmer farmer;
